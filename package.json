@@ -9,6 +9,10 @@
     "watch": "nodemon server.js"    
   },
   "author": "jesse",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmbernie/Hell-On-Earth.git"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.2",
