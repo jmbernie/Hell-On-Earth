@@ -1,0 +1,21 @@
+{
+  "name": "lyric-generator",
+  "version": "1.0.0",
+  "description": "lyric-generator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"    
+  },
+  "author": "jesse",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.10.2",
+    "nodemon": "^1.12.5",
+    "sequelize": "^4.3.1"
+  }
+}
