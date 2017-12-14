@@ -1,0 +1,29 @@
+<h2>Add a Quote</h2>
+
+<form class="create-form" id="newPostForm">
+
+  <div class="form-group">
+    <label for="auth">Author:</label>
+    <input type="text" id="auth" name="author">
+  </div>
+
+  <div class="form-group">
+    <label for="postBody">Quote:</label>
+    <textarea id="postBody" name="post" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit" id="addPost">Add Quote</button>
+</form>
+
+<script type="text/javascript">
+  $('#addPost').on('click', (event) => {
+    event.preventDefault()
+
+    var author = $('#auth').val().trim()
+    var postBody = $('#postBody').val().trim()
+
+    $.post('/api/posts', {author: author, body: postBody}, () => {
+      location.reload()
+    })
+  })
+</script>
