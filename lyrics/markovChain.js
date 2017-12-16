@@ -1,6 +1,6 @@
 var MarkovChain = require('markovchain');
 var fs = require('fs');
-var quotes = new MarkovChain(fs.readFileSync('./models/TupacLyrics.txt', 'utf8'));
+var quotes = new MarkovChain(fs.readFileSync('./lyrics/TupacLyrics.txt', 'utf8'));
 var fulLyrics = [];
 var starterWord = 'The';
 var nextLineSeed1 = starterWord;
