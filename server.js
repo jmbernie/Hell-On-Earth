@@ -18,6 +18,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 var db = require('./models')
+var markov = require('./lyrics/markovChain.js');
 
 db.sequelize.sync().then(() => {
   console.log('database synchronized')
@@ -65,7 +66,21 @@ app.post("/api/posts", function(req, res) {
   //     // If an error occurred, send a generic server faliure
   //     return res.status(500).end();
   //   }
-  db.post.create(req.body).then((post) => { console.log(post); res.json(post); })
+  
+    console.log(req.body);
+    console.log(req.body.author);
+    console.log(req.body.artist);
+    console.log(req.body.body);
+    //console.log("req.body:  " + req.body);
+    //console.log("req.body.body:  " + req.body.body);
+    req.body.body = markov.markovChainLyrics(req.body.artist, req.body.body);
+
+
+
+  db.post.create(req.body).then((post) => { 
+    //console.log(post);
+    res.json(post); 
+  })
 
   //   // Send back the ID of the new quote
   //   res.json({ id: result.insertId });
