@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var post = sequelize.define('post', {
     author: DataTypes.STRING,
+    artist: DataTypes.STRING,
     body: DataTypes.TEXT,
     type: DataTypes.STRING
   }, {

@@ -66,11 +66,14 @@ app.post("/api/posts", function(req, res) {
   //     // If an error occurred, send a generic server faliure
   //     return res.status(500).end();
   //   }
+  
     console.log(req.body);
+    console.log(req.body.author);
+    console.log(req.body.artist);
     console.log(req.body.body);
     //console.log("req.body:  " + req.body);
     //console.log("req.body.body:  " + req.body.body);
-    req.body.body = markov.markovChainLyrics(req.body.body);
+    req.body.body = markov.markovChainLyrics(req.body.artist, req.body.body);
 
 
 
