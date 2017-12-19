@@ -1,26 +1,51 @@
-<h2>Add a Quote</h2>
-
-<form class="create-form" id="newPostForm">
-
-  <div class="form-group">
-    <label for="auth">Author:</label>
-    <input type="text" id="auth" name="author">
+<div id="home-page">
+      <div class="row">
+         <div class="dropdown col-xs-6" id="pleasework">
+           <button class="btn btn-default dropdown-toggle marina-button" type="button" id="artists" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 artists
+            </button>
+               <ul class="dropdown-menu" aria-labelledby="artists">
+                   <li>
+                       <a class="dropdown-item" href="#">a</a>
+                   </li>
+                   <li>
+                       <a class="dropdown-item" href="#">b</a>
+                   </li>
+                   <li>
+                       <a class="dropdown-item" href="#">c</a>
+                   </li>
+               </ul>
+         </div>
+          <div class="col-xs-6">
+            <input type="text" placeholder="lyric" id="lyric-entry"></input>
+            <button id="submit"></button>
+          </div>
+     </div>
+      <div class="row" id="populated">
+        <div class="col-xs-4" id="lyricoption1">
+          <div class="panel panel-default">
+            <div class="panel-body">option 1 hufdhslfkndsk fliewoi ioewhioteioddfsfioewiotewio fipehdf ipsjipfwepirheioh</div>
+          </div>
+        </div>
+      <div class="col-xs-4" id="lyricoption2">
+        <div class="panel panel-default">
+          <div class="panel-body">option 2</div>
+        </div>
+      </div>
+    <div class="col-xs-4" id="lyricoption3">
+      <div class="panel panel-default">
+        <div class="panel-body">option 3</div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="postBody">Quote:</label>
-    <textarea id="postBody" name="post" rows="8" cols="40"></textarea>
-  </div>
-
-  <button type="submit" id="addPost">Add Quote</button>
-</form>
+</div>
 
 <script type="text/javascript">
-  $('#addPost').on('click', (event) => {
+  $('#submit').on('click', (event) => {
     event.preventDefault()
 
-    var author = $('#auth').val().trim()
-    var postBody = $('#postBody').val().trim()
+    var author = 'idk'
+    var postBody = $('#lyric-entry').val().trim()
 
     $.post('/api/posts', {author: author, body: postBody}, () => {
       location.reload()
