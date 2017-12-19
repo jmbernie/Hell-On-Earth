@@ -2,7 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 
 var app = express();
-var port = 3000;
+//var port = 3000;
+var port = process.env.PORT || 3000;
 
 // Use the express.static middleware to serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -66,7 +67,7 @@ app.post("/api/posts", function(req, res) {
   //     // If an error occurred, send a generic server faliure
   //     return res.status(500).end();
   //   }
-  
+
     console.log(req.body);
     console.log(req.body.author);
     console.log(req.body.artist);
