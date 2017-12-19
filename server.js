@@ -72,7 +72,7 @@ app.post("/api/posts", function(req, res) {
   // });
 });
 
-app.delete("/api/quotes/:id", function(req, res) {
+app.get("/api/post/:id/delete", function(req, res) {
   // connection.query("DELETE FROM quotes WHERE id = ?", [req.params.id], function(err, result) {
   //   if (err) {
   //     // If an error occurred, send a generic server faliure
@@ -84,8 +84,8 @@ app.delete("/api/quotes/:id", function(req, res) {
   //     res.status(200).end();
   //   }
   // });
-  db.posts.destroy({where: {id: req.params.id}})
-  .then((thing) => { console.log(thing); res.status(200).end() })
+  db.post.destroy({where: {id: req.params.id}})
+  .then((thing) => { console.log(thing); res.redirect('/') })
 });
 
 
