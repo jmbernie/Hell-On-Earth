@@ -48,6 +48,20 @@ app.get('/favicon.ico', function (req, res) {
   res.status(204).end()
 })
 
+app.get('/api/markov/:artist/:seed', function (req, res) {
+  console.log(req.params)
+  var artist = req.params.artist
+  var seed = req.params.seed
+  var options = {
+    artist: artist,
+    seed: seed,
+    options: [markov.markovChainLyrics(artist, seed),
+      markov.markovChainLyrics(artist, seed),
+      markov.markovChainLyrics(artist, seed)]
+  }
+  res.json(options)
+})
+
 // Show the user the individual quote and the form to update the quote.
 app.get("api/posts/:id", function(req, res) {
   console.log(req.params)
@@ -82,7 +96,7 @@ app.post("/api/posts", function(req, res) {
   } else {
     console.log(req.user)
     var thisPost = {
-      body: markov.markovChainLyrics(req.body.artist, req.body.body),
+      body: req.body.body,
       author: req.user.dataValues.name,
       artist: req.body.artist
     }

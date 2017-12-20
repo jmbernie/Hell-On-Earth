@@ -1,48 +1,35 @@
 <div id="home-page">
       <div class="row">
-        <div class="form-group">
-          <label for="artist">Artist:</label>
-          <select name="artist" id="artist">
-            <option value="tupac">Tupac</option>
-            <option value="morrissey">Morrissey/Smiths</option>
-            <option value="christmas">Christmas</option>
-          </select>
-        </div>
+        
          <div class="dropdown col-xs-6" id="pleasework">
-           <button class="btn btn-default dropdown-toggle marina-button" type="button" id="artists" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 artists
-            </button>
-               <ul class="dropdown-menu" aria-labelledby="artists">
-                   <li>
-                       <a class="dropdown-item" href="#">a</a>
-                   </li>
-                   <li>
-                       <a class="dropdown-item" href="#">b</a>
-                   </li>
-                   <li>
-                       <a class="dropdown-item" href="#">c</a>
-                   </li>
-               </ul>
+           <div class="form-group">
+            <label for="artist">Artist:</label>
+            <select name="artist" id="artist">
+              <option value="tupac">Tupac</option>
+              <option value="morrissey">Morrissey/Smiths</option>
+              <option value="christmas">Christmas</option>
+            </select>
+           </div>
          </div>
           <div class="col-xs-6">
             <input type="text" placeholder="lyric" id="lyric-entry"></input>
-            <button id="submit"></button>
+            <button class="btn btn-primary" id="submit">Generate</button>
           </div>
      </div>
       <div class="row" id="populated">
-        <div class="col-xs-4" id="lyricoption1">
+        <div class="col-xs-4">
           <div class="panel panel-default">
-            <div class="panel-body">option 1 hufdhslfkndsk fliewoi ioewhioteioddfsfioewiotewio fipehdf ipsjipfwepirheioh</div>
+            <div class="panel-body" id="lyricoption1">option 1 hufdhslfkndsk fliewoi ioewhioteioddfsfioewiotewio fipehdf ipsjipfwepirheioh</div>
           </div>
         </div>
-      <div class="col-xs-4" id="lyricoption2">
+      <div class="col-xs-4">
         <div class="panel panel-default">
-          <div class="panel-body">option 2</div>
+          <div class="panel-body" id="lyricoption2">option 2</div>
         </div>
       </div>
-    <div class="col-xs-4" id="lyricoption3">
+    <div class="col-xs-4">
       <div class="panel panel-default">
-        <div class="panel-body">option 3</div>
+        <div class="panel-body" id="lyricoption3">option 3</div>
       </div>
     </div>
   </div>
@@ -53,13 +40,25 @@
     event.preventDefault()
 
     var postBody = $('#lyric-entry').val().trim()
+    
+    $.get(`/api/markov/${artist}/${postBody}`)
+      .done(res => {
+        console.log(res)
+        $('#lyricoption1').text(res.options[0])
+        $('#lyricoption2').text(res.options[1])
+        $('#lyricoption3').text(res.options[2])
+      })
+  })
+
+  $('#populated .panel').on('click', e => {
     var artist = $('#artist').val();
     
-    $.post('/api/posts', {artist: artist, body: postBody})
+    $.post('/api/posts', {artist: artist, body: e.target.textContent})
     .done((res) => {
       location.reload()
     })
     .fail((res, type, message) => {
+      console.log(message)
       if (message === "Unauthorized") {
         location.replace('/login')
       }
