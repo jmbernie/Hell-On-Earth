@@ -1,16 +1,21 @@
 <!-- Pass in data from server.js -->
-<ul>
-  {{#each posts}}
-  	<li>
-  		<p><span class="label">ID:</span> {{id}}</p>
-      <p><span class="label">Quote:</span> {{body}}</p>
-      <p><span class="label">Author:</span> {{author}}</p>
+<div id="leaderboards-page">
+    <div class="panel panel-default" >
+      <div class="panel-body">
+        <ul>
+          {{#each posts}}
+          	<li>
+          		<p><span class="label">ID:</span> {{id}}</p>
+              <p><span class="label">Quote:</span> {{body}}</p>
+              <p><span class="label">Author:</span> {{author}}</p>
 
-      <button data-id="{{id}}" class="delquote">Delete</button>
+              <button data-id="{{id}}" class="delquote">Delete</button>
 
-      <a href="/{{id}}">Update this quote</a>
-  	</li>
-  {{/each}}
-</ul>
-
-{{> add}}
+              <a href="/{{id}}">Update this quote</a>
+          	</li>
+          {{/each}}
+        </ul>
+      </div>
+      {{> add}}
+    </div>
+</div>
