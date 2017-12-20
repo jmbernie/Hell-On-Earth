@@ -26,10 +26,13 @@ function markovChainLyrics(selectedAuthor, userSeedWord){
 			break;	
 		case "Christmas": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/ChristmasLyrics.txt', 'utf8'));
+			break;
 		case "Beatles": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/BeatlesLyrics.txt', 'utf8'));
+			break;
 		case "Meatloaf": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/MeatloafLyrics.txt', 'utf8'));
+			break;
 		case "Prince": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/PrinceLyrics.txt', 'utf8'));
 			break;
