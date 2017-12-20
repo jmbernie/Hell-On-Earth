@@ -3,16 +3,25 @@
 <form class="create-form" id="newPostForm">
 
   <div class="form-group">
-    <label for="auth">Author:</label>
+    <label for="auth">Your Name:</label>
     <input type="text" id="auth" name="author">
+  </div>
+  
+  <div class="form-group">
+    <label for="artist">Artist:</label>
+    <select name="artist" id="artist">
+      <option value="tupac">Tupac</option>
+      <option value="morrissey">Morrissey/Smiths</option>
+      <option value="christmas">Christmas</option>
+    </select>
   </div>
 
   <div class="form-group">
-    <label for="postBody">Quote:</label>
-    <textarea id="postBody" name="post" rows="8" cols="40"></textarea>
+    <label for="postBody">Lyric Seed (one word):</label>
+    <textarea id="postBody" name="post" rows="1" cols="20"></textarea>
   </div>
 
-  <button type="submit" id="addPost">Add Quote</button>
+  <button type="submit" id="addPost">Create Song</button>
 </form>
 
 <script type="text/javascript">
@@ -21,8 +30,9 @@
 
     var author = $('#auth').val().trim()
     var postBody = $('#postBody').val().trim()
-
-    $.post('/api/posts', {author: author, body: postBody})
+    var artist = $('#artist').val();
+    
+    $.post('/api/posts', {author: author, artist: artist, body: postBody})
     .done((res) => {
       location.reload()
     })

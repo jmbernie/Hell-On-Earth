@@ -22,7 +22,9 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 var db = require('./models')
+
 var passport = require('./passport.js')(app)
+var markov = require('./lyrics/markovChain.js');
 
 db.sequelize.sync().then(() => {
   console.log('database synchronized')
@@ -70,16 +72,22 @@ app.post("/api/posts", function(req, res) {
   //     // If an error occurred, send a generic server faliure
   //     return res.status(500).end();
   //   }
+    console.log(req.body);
+    console.log(req.body.author);
+    console.log(req.body.artist);
+    console.log(req.body.body);
+  
   if (!req.user) {
     res.status(401).end()
   } else {
     console.log(req.user)
     var thisPost = {
-      body: req.body.body,
+      body: markov.markovChainLyrics(req.body.artist, req.body.body),
       author: req.user.dataValues.name
     }
     db.post.create(thisPost).then((post) => { console.log(post); res.json(post); })
   }
+
   //   // Send back the ID of the new quote
   //   res.json({ id: result.insertId });
   // });
@@ -118,7 +126,7 @@ app.post('/login',
   )
 );
 
-app.delete("/api/quotes/:id", function(req, res) {
+app.get("/api/post/:id/delete", function(req, res) {
   // connection.query("DELETE FROM quotes WHERE id = ?", [req.params.id], function(err, result) {
   //   if (err) {
   //     // If an error occurred, send a generic server faliure
@@ -130,8 +138,8 @@ app.delete("/api/quotes/:id", function(req, res) {
   //     res.status(200).end();
   //   }
   // });
-  db.posts.destroy({where: {id: req.params.id}})
-  .then((thing) => { console.log(thing); res.status(200).end() })
+  db.post.destroy({where: {id: req.params.id}})
+  .then((thing) => { console.log(thing); res.redirect('/') })
 });
 
 
