@@ -19,14 +19,9 @@
     "database": "rtnqepkeve7lke7m",
     "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
-    "use_env_variable": "mysql://egznvjrsoo7pb1du:nf1673e6glrx4wjd@ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/rtnqepkeve7lke7m"
+    //"use_env_variable": "mysql://egznvjrsoo7pb1du:nf1673e6glrx4wjd@ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/rtnqepkeve7lke7m",
+    "use_env_variable": "mysql:egznvjrsoo7pb1du:nf1673e6glrx4wjd@ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/rtnqepkeve7lke7m"
+
+
   }
 }
-//  "production": {
-  //   "username": "kjygfmf3ple7q148",
-  //   "password": "kshfm2qldflfy2a9",
-  //   "database": "xmvm0mp18drq2x10",
-  //   "host": "enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  //   "dialect": "mysql",
-  //   "use_env_variable": "mysql://kjygfmf3ple7q148:kshfm2qldflfy2a9@enqhzd10cxh7hv2e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/xmvm0mp18drq2x10"
-  // }
