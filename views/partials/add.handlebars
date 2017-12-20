@@ -31,8 +31,15 @@
     var author = $('#auth').val().trim()
     var postBody = $('#postBody').val().trim()
     var artist = $('#artist').val();
-    $.post('/api/posts', {author: author, artist: artist, body: postBody}, () => {
+    
+    $.post('/api/posts', {author: author, artist: artist, body: postBody})
+    .done((res) => {
       location.reload()
+    })
+    .fail((res, type, message) => {
+      if (message === "Unauthorized") {
+        location.replace('/login')
+      }
     })
   })
 </script>
