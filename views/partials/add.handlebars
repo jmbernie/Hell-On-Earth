@@ -40,6 +40,7 @@
     event.preventDefault()
 
     var postBody = $('#lyric-entry').val().trim()
+    var artist = $('#artist').val()
     
     $.get(`/api/markov/${artist}/${postBody}`)
       .done(res => {
@@ -52,7 +53,7 @@
 
   $('#populated .panel').on('click', e => {
     var artist = $('#artist').val();
-    
+
     $.post('/api/posts', {artist: artist, body: e.target.textContent})
     .done((res) => {
       location.reload()
