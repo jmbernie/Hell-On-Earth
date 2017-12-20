@@ -19,6 +19,6 @@
     "database": "rtnqepkeve7lke7m",
     "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
-    "use_env_variable": "mysql://egznvjrsoo7pb1du:nf1673e6glrx4wjd@ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/rtnqepkeve7lke7m",
+    "use_env_variable": "mysql://egznvjrsoo7pb1du:nf1673e6glrx4wjd@ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/rtnqepkeve7lke7m"
   }
 }
