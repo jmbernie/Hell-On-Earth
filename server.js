@@ -87,10 +87,7 @@ app.post("/api/posts", function(req, res) {
   //     // If an error occurred, send a generic server faliure
   //     return res.status(500).end();
   //   }
-<<<<<<< HEAD
 
-=======
->>>>>>> ebf9c114d3194490051326e74c93ada05eddddca
     console.log(req.body);
     console.log(req.body.author);
     console.log(req.body.artist);

@@ -18,14 +18,20 @@ function markovChainLyrics(selectedAuthor, userSeedWord){
 	//console.log(userSeedWord);
 
 	switch(selectedAuthor){// set lyric database based on author
-		case "tupac": 
+		case "Tupac": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/TupacLyrics.txt', 'utf8'));
 			break;
-		case "morrissey": 
+		case "Morrissey": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/MorresseyLyrics.txt', 'utf8'));
 			break;	
-		case "christmas": 
+		case "Christmas": 
 			quotes = new MarkovChain(fs.readFileSync('./lyrics/ChristmasLyrics.txt', 'utf8'));
+		case "Beatles": 
+			quotes = new MarkovChain(fs.readFileSync('./lyrics/BeatlesLyrics.txt', 'utf8'));
+		case "Meatloaf": 
+			quotes = new MarkovChain(fs.readFileSync('./lyrics/MeatloafLyrics.txt', 'utf8'));
+		case "Prince": 
+			quotes = new MarkovChain(fs.readFileSync('./lyrics/PrinceLyrics.txt', 'utf8'));
 			break;
 	}
 
