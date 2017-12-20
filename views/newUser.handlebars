@@ -1,0 +1,19 @@
+{{> login}}
+
+<script type="text/javascript">
+  $('#login').on('click', (event) => {
+    event.preventDefault()
+
+    var username = $('#username').val().trim()
+    var password = $('#password').val().trim()
+
+    $.post('/newUser', {username: username, password: password}, (res) => {
+      $.post('/login', {username: username, password: password}, (res) => {
+        window.location.href = '/'
+        document.open()
+        document.write(res)
+        document.close()
+      })
+    })
+  })
+</script>
