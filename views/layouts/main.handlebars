@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/assets/js/quotes.js"></script>
-		<title>Quotes App</title>
-	</head>
-	<body>
-    <h1>Quotes App</h1>
+  <meta charset="UTF-8">
+  <title>Hell on Earth</title>
+  <meta name="viewport" initial-scale="1">
 
-    <p>Manage quotes with this app</p>
-    <a href="/login">Log in</a>
-    <a href="/newUser">New User</a>
-    
-		{{{ body }}}
+  <!-- Amatic SC Font -->
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
+
+  <!-- Latest and Greatest Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Reset.css -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+  <!-- Style.css -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+      <!-- jQuery 3.2.1 -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Bootstrap JS Plugin -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+  <body id='bgimg' background="assets/img/backgrund.png">
+    <header id='page-header'>
+    <nav>
+      <ul>
+          <img id='leaderboards-button' src="assets/img/leaderboards.png">
+          <img id='home-button' src="assets/img/logo.png">
+          <img id='about-button' src="assets/img/about.png">
+          <a href="/login">Log in</a>
+          <a href="/newUser">New User</a>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- About Page -->
+    <div id="about-page">
+      <img id='aboutbg' src="assets/img/aboutbg.png">
+        <div class="abouttext">
+          <h1> About </h1>
+            <p> Hell on Earth allows you to generate lyrics inspired by your input! Type a word in the searchbar to generate something awesome!
+              <br>
+              Click an artist from the dropdown to choose who inspires your song.
+            </p>
+        </div>
+    </div>
+
+    {{{ body }}}
+
+
+  <!-- our logic.js file -->
+  <script type="text/javascript" src='assets/javascript/logic.js'></script>
+
 	</body>
 </html>

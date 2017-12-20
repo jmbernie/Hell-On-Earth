@@ -1,36 +1,65 @@
-<h2>Add a Quote</h2>
-
-<form class="create-form" id="newPostForm">
-  
-  <div class="form-group">
-    <label for="artist">Artist:</label>
-    <select name="artist" id="artist">
-      <option value="tupac">Tupac</option>
-      <option value="morrissey">Morrissey/Smiths</option>
-      <option value="christmas">Christmas</option>
-    </select>
+<div id="home-page">
+      <div class="row">
+        
+         <div class="dropdown col-xs-6" id="pleasework">
+           <div class="form-group">
+            <label for="artist">Artist:</label>
+            <select name="artist" id="artist">
+              <option value="tupac">Tupac</option>
+              <option value="morrissey">Morrissey/Smiths</option>
+              <option value="christmas">Christmas</option>
+            </select>
+           </div>
+         </div>
+          <div class="col-xs-6">
+            <input type="text" placeholder="lyric" id="lyric-entry"></input>
+            <button class="btn btn-primary" id="submit">Generate</button>
+          </div>
+     </div>
+      <div class="row" id="populated">
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-body" id="lyricoption1">option 1 hufdhslfkndsk fliewoi ioewhioteioddfsfioewiotewio fipehdf ipsjipfwepirheioh</div>
+          </div>
+        </div>
+      <div class="col-xs-4">
+        <div class="panel panel-default">
+          <div class="panel-body" id="lyricoption2">option 2</div>
+        </div>
+      </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel-body" id="lyricoption3">option 3</div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="postBody">Lyric Seed (one word):</label>
-    <textarea id="postBody" name="post" rows="1" cols="20"></textarea>
-  </div>
-
-  <button type="submit" id="addPost">Create Song</button>
-</form>
+</div>
 
 <script type="text/javascript">
-  $('#addPost').on('click', (event) => {
+  $('#submit').on('click', (event) => {
     event.preventDefault()
 
-    var postBody = $('#postBody').val().trim()
-    var artist = $('#artist').val();
+    var postBody = $('#lyric-entry').val().trim()
+    var artist = $('#artist').val()
     
-    $.post('/api/posts', {artist: artist, body: postBody})
+    $.get(`/api/markov/${artist}/${postBody}`)
+      .done(res => {
+        console.log(res)
+        $('#lyricoption1').text(res.options[0])
+        $('#lyricoption2').text(res.options[1])
+        $('#lyricoption3').text(res.options[2])
+      })
+  })
+
+  $('#populated .panel').on('click', e => {
+    var artist = $('#artist').val();
+
+    $.post('/api/posts', {artist: artist, body: e.target.textContent})
     .done((res) => {
       location.reload()
     })
     .fail((res, type, message) => {
+      console.log(message)
       if (message === "Unauthorized") {
         location.replace('/login')
       }
