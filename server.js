@@ -83,7 +83,8 @@ app.post("/api/posts", function(req, res) {
     console.log(req.user)
     var thisPost = {
       body: markov.markovChainLyrics(req.body.artist, req.body.body),
-      author: req.user.dataValues.name
+      author: req.user.dataValues.name,
+      artist: req.body.artist
     }
     db.post.create(thisPost).then((post) => { console.log(post); res.json(post); })
   }

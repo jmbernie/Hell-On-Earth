@@ -1,11 +1,6 @@
 <h2>Add a Quote</h2>
 
 <form class="create-form" id="newPostForm">
-
-  <div class="form-group">
-    <label for="auth">Your Name:</label>
-    <input type="text" id="auth" name="author">
-  </div>
   
   <div class="form-group">
     <label for="artist">Artist:</label>
@@ -28,11 +23,10 @@
   $('#addPost').on('click', (event) => {
     event.preventDefault()
 
-    var author = $('#auth').val().trim()
     var postBody = $('#postBody').val().trim()
     var artist = $('#artist').val();
     
-    $.post('/api/posts', {author: author, artist: artist, body: postBody})
+    $.post('/api/posts', {artist: artist, body: postBody})
     .done((res) => {
       location.reload()
     })
