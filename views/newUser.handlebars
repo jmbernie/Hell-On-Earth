@@ -9,10 +9,7 @@
 
     $.post('/newUser', {username: username, password: password}, (res) => {
       $.post('/login', {username: username, password: password}, (res) => {
-        window.location.href = '/'
-        document.open()
-        document.write(res)
-        document.close()
+        window.location.replace('/')
       })
     })
   })
